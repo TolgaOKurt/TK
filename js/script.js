@@ -80,7 +80,7 @@
       link = document.createElement('a');
       link.id = 'share-link';
       link.className = 'theme-toggle';
-      const shareUrl = 'https://tolgaokurt.github.io/WebsiteOfTK/';
+      const shareUrl = 'https://tolgaokurt.github.io/TK/';
       link.href = shareUrl;
       link.title = 'Share website';
       link.textContent = 'Share';
