@@ -4,29 +4,9 @@
   const navEl = document.getElementById('nav');
   const CACHE = new Map();
 
-  const { getPageInfo, setActive, injectNavStyles, buildNav, pages } = window.navigation;
+  const { getPageInfo, setActive, buildNav, pages } = window.navigation;
   const { initLangToggle, setLanguage, applyTranslations, loadLanguageForPage, getTranslation, getCurrentLang, setCurrentLang } = window.language;
   const { initThemeToggle } = window.theme;
-
-  /**
-   * Injects CSS styles into the document head to make the header title a clickable link.
-   */
-  function injectHeaderStyles() {
-    const style = document.createElement('style');
-    style.textContent = `
-        .header-title-link {
-            color: inherit;
-            text-decoration: none;
-            font-weight: inherit;
-            cursor: pointer;
-        }
-        .header-title-link:hover {
-            color: inherit;
-            text-decoration: none;
-        }
-    `;
-    document.head.appendChild(style);
-  }
 
   /**
    * Converts the main header H1 element into a link that navigates to the homepage.
@@ -168,8 +148,6 @@
 
   // Initialize the application after the DOM is fully loaded.
   document.addEventListener('DOMContentLoaded', async () => {
-    injectNavStyles();
-    injectHeaderStyles();
     buildNav(pages, navEl);
     initHeaderLink();
 

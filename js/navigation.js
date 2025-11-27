@@ -91,40 +91,6 @@ window.navigation = (() => {
     });
   }
 
-  function injectNavStyles() {
-    const style = document.createElement('style');
-    style.textContent = `
-        .nav-folder-content {
-            padding-left: 20px;
-            overflow: hidden;
-            max-height: 1000px; /* Set a large max-height for transition */
-            transition: max-height 0.3s ease-in-out, visibility 0.3s ease-in-out;
-        }
-        .nav-folder-content[hidden] {
-            max-height: 0;
-        }
-        .nav-folder-toggle {
-            background: none; 
-            border: none; 
-            padding: 0; 
-            font: inherit; 
-            cursor: pointer; 
-            text-align: left; 
-            width: 100%;
-        }
-        .nav-folder-toggle::after {
-            content: ' ▼';
-            font-size: 0.8em;
-            display: inline-block;
-            transition: transform 0.2s;
-        }
-        .nav-folder-toggle[aria-expanded="true"]::after {
-            transform: rotate(180deg);
-        }
-    `;
-    document.head.appendChild(style);
-  }
-
   function setActive(name) {
     links.forEach(({ el, page, isFolder, contentEl }) => {
         if (isFolder) {
@@ -164,7 +130,6 @@ window.navigation = (() => {
     pages,
     links,
     buildNav,
-    injectNavStyles,
     setActive,
     getPageInfo
   };

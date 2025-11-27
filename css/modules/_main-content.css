@@ -1,0 +1,35 @@
+main#icerik{
+  padding:0;
+  min-height:220px; /* boş sayfalarda yükseklik korur */
+  background: transparent;
+}
+
+.hint{
+  /*color:rgb(0, 0, 0);*/
+  cursor: help;
+  font-style: italic;
+  position: relative;
+}
+
+.hint::after{
+  content: "yani?";
+  font-size: 0.5em;
+  margin-left: 4px;
+  color: rgb(158, 66, 66);
+}
+
+.info{
+  cursor: help;
+  color: rgb(0, 95, 36);
+}
+
+/* fade sınıfı JS ile tetikleniyor */
+.fade {
+  opacity:0;
+  transform: translateY(6px);
+  transition: opacity .28s ease, transform .28s ease;
+}
+.fade.show {
+  opacity:1;
+  transform: none;
+}

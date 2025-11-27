@@ -1,0 +1,17 @@
+/* düzen */
+.wrap{
+  max-width: var(--maxwidth);
+  margin:0 auto;
+  padding:28px;
+  display:grid;
+  grid-template-columns: 1fr 400px;
+  gap:var(--gap);
+  align-items:start;
+}
+
+/* responsive */
+@media (max-width:950px){
+  .wrap{ grid-template-columns:1fr; padding:18px; }
+  nav#nav{ order:-1; padding-top:18px; display:flex; gap:12px; flex-wrap:wrap; }
+  nav .link{ margin:0; font-size:14px; }
+}
