@@ -1,8 +1,141 @@
 <section>
-    <h2>YAPIM AŞAMASINDA!</h2>
-    <h1>Ucgensel sayıların Kalan Donguleri</h1>
-    <p><a href="https://github.com/TolgaOKurt/Ugraslar/blob/main/PreSept25/LiseZamanıProjesi_UcgengelSayılarınModulerAritmetikleİncelenmesi.pdf"
-            target="_blank">UAMAiİ.pdf</a> olarak isimlendirdiğim kısım<br>
-        Sistem Mantık ve Düzen<br>
-    </p>
+    <header>
+        <h1>Üçgensel Sayıların Kalan Döngüleri</h1>
+        <p>
+            Bu çalışma, <a
+                href="https://github.com/TolgaOKurt/Ugraslar/blob/main/PreSept25/LiseZamanıProjesi_UcgengelSayılarınModulerAritmetikleİncelenmesi.pdf"
+                target="_blank">UAMAiİ.pdf</a> dosyasında detaylandırılan sistemin mantığını ve düzenini açıklamaktadır.
+        </p>
+    </header>
+
+    <article>
+        <h2>Üçgensel Sayılar Nedir?</h2>
+        <p>
+            Üçgensel sayılar, <strong>T(n) = n(n+1)/2</strong> formülü ile hesaplanır.
+            <br>Örneğin:
+        </p>
+        <ul>
+            <li>T(0) = 0</li>
+            <li>T(1) = 1</li>
+            <li>...</li>
+            <li>T(15) = 120</li>
+        </ul>
+        <p>
+            Sırasıyla üçgensel sayılar dizisi şöyledir:<br>
+            (1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 66, 78, 91, 105, 120, ...)
+        </p>
+
+        <h2>Modüler Aritmetik ile İnceleme</h2>
+        <p>T(n) dizisinin farklı modülo (m) değerlerine göre kalanlarını (T(n) mod m) incelediğimizde belirli döngülerle
+            karşılaşırız.</p>
+
+        <ul>
+            <li><strong>m = 2 için:</strong> (1, 1, 0, 0, 1, 1, 0, 0, ...)</li>
+            <li><strong>m = 3 için:</strong> (1, 0, 0, 1, 0, 0, ...)</li>
+            <li><strong>m = 4 için:</strong> (1, 3, 2, 2, 3, 1, 0, 0, ...)</li>
+            <li><strong>m = 5 için:</strong> (1, 3, 1, 0, 0, 1, 3, 1, 0, 0, ...)</li>
+            <li><strong>m = 6 için:</strong> (1, 3, 0, 4, 3, 3, 4, 0, 3, 1, 0, 0, ...)</li>
+            <li><strong>m = 7 için:</strong> (1, 3, 6, 3, 1, 0, 0, 1, 3, 6, 3, 1, 0, 0, ...)</li>
+        </ul>
+
+        <p>Bu dizilerde şu kurallar gözlemlenmiştir:</p>
+        <ul>
+            <li><strong>m tek ise:</strong> T(m-1) ≡ T(m) ≡ 0 (mod m)</li>
+            <li><strong>m çift ise:</strong> T(2m-1) ≡ T(2m) ≡ 0 (mod m)</li>
+        </ul>
+        <p>
+            Örnek döngüler:
+            <br><strong>Mod 8:</strong> (1, 3, 6, 2, 7, 5, 4, 4, 5, 7, 2, 6, 3, 1, 0, 0)
+            <br><strong>Mod 9:</strong> (1, 3, 6, 1, 6, 3, 1, 0, 0)
+            <br><strong>Mod 10:</strong> (1, 3, 6, 0, 5, 1, 8, 6, 5, 5, 6, 8, 1, 5, 0, 6, 3, 1, 0, 0)
+        </p>
+        <p>Bu sonuçlardan, birler basamağı (2, 4, 7, 9) olan hiçbir üçgensel sayı olmadığını görebiliriz.</p>
+
+        <h2>Döngü Toplamları İncelemeleri</h2>
+        <p>Her bir mod değeri için oluşan döngüdeki sayıların toplamını inceleyelim:</p>
+        <ul>
+            <li><strong>Mod 2:</strong> Döngü (1, 1, 0, 0). Toplam = 2.</li>
+            <li><strong>Mod 3:</strong> Döngü (1, 0, 0). Toplam = 1.</li>
+            <li><strong>Mod 4:</strong> Döngü (1, 3, 2, 2, 3, 1, 0, 0). Toplam = 12.</li>
+            <li><strong>Mod 5:</strong> Toplam = 5.</li>
+            <li><strong>Mod 6:</strong> Toplam = 22.</li>
+        </ul>
+        <p>
+            Not: Mod 4 için, ilk 8 (çift olduğu için 2*4) üçgensel sayının mod 4'teki değerlerini topluyoruz.<br>
+            Mod 5 için, ilk 5 (tek olduğu için 1*5) üçgensel sayının mod 5'teki değerlerini topluyoruz.
+        </p>
+
+        <p>Bu toplamları, 1. sıraya 0 koyarak sıraladığımızda şu dizi ortaya çıkar:<br>
+            (0, 2, 1, 12, 5, 22, 14, 56, 21, 70, 44, 116, 52, 154, 65, ...)</p>
+
+        <h2>Oranlar ve Bağlantılar</h2>
+        <p>Döngü toplamları ile mod sayısı (m) arasında bir bağlantı olup olmadığını anlamak için <strong>(Döngü
+                Toplamı) / (Mod Sayısı)</strong> oranına bakabiliriz.</p>
+
+        <p>Örnekler:</p>
+        <ul>
+            <li>Mod 2 için toplam 2 idi. Oran: 2/2 = 1.</li>
+            <li>Mod 3 için toplam 1 idi. Oran: 1/3 ≈ 0.333.</li>
+        </ul>
+
+        <p>Mod 2'den başlayarak ilk 15 sayı için oranlar şöyledir:<br>
+            (1, 0.333, 3, 1, 3.666, 2, 7, 2.333, 7, 4, 9.666, 11, 4.333)</p>
+
+        <h3>3'ün Katları</h3>
+        <p>Sadece 3'ün katlarındaki oranları sıralarsak:</p>
+        <p>(0.333, 3.666, 2.333, 9.666, 4.333, 13.666, ...)</p>
+        <p>
+            Burada ilginç bir desen vardır:
+            <br>- 3'ün katı olan <strong>çift</strong> sayıların oranında virgülden sonra devreden kısım
+            <strong>6</strong>'dır.
+            <br>- 3'ün katı olan <strong>tek</strong> sayıların oranında virgülden sonra devreden kısım
+            <strong>3</strong>'tür.
+        </p>
+
+        <h3>Yakınsama Durumu</h3>
+        <p>Oranlar incelendiğinde şu yakınsamalar görülmektedir:</p>
+        <ul>
+            <li>Çift bir sayının döngü toplamının, bir önceki sayının döngü toplamına oranı <strong>2</strong>'ye,</li>
+            <li>Tek bir sayının döngü toplamının, bir önceki sayının döngü toplamına oranı <strong>0.5</strong>'e,</li>
+            <li>Çift sayının döngü toplamının, bir önceki <strong>çift</strong> sayının döngü toplamına oranı
+                <strong>1</strong>'e,
+            </li>
+            <li>Tek sayının döngü toplamının, bir önceki <strong>tek</strong> sayının döngü toplamına oranı
+                <strong>1</strong>'e yakınsar.
+            </li>
+        </ul>
+
+        <h2>Merkez Sayı ve İyonlaşma Enerjisi Benzerliği</h2>
+        <p>Tek sayılarda "merkez sayı"yı bulmak için kullanılan formül:</p>
+        <p><strong>(m² - 1) / 8 (mod m)</strong></p>
+
+        <p>İlk 50 sayı için merkez sayı dizisi:</p>
+        <p>(0, 1, 1, 2, 3, 3, 6, 4, 1, 5, 4, 6, 8, 7, 13, 8, 2, 9, 7, 10, 13, 11, 20, 12, 3, 13, 10, 14, 18, 15, ...)
+        </p>
+
+        <figure>
+            <img src="images/Ucgenselsayidonguleridongumerkezidizisiiyonlaşmaenerjisi.png"
+                alt="Üçgensel Sayı Döngü Merkezi Dizisi Grafiği" style="max-width: 100%; height: auto;">
+            <figcaption>Grafik: Üçgensel sayı döngü merkezi dizisi</figcaption>
+        </figure>
+        <p><a href="images/Ucgenselsayidonguleridongumerkezidizisiiyonlaşmaenerjisi.png" download>Resmi İndir</a></p>
+
+        <h2>Asal Sayılar ve Oranlar</h2>
+        <p>
+            Döngü toplamlarının asal sayılara (p) oranını incelediğimizde:
+            <br>Mod 5 için toplam 5, oran 5/5 = 1.
+            <br>Mod 7 için toplam 14, oran 14/7 = 2.
+        </p>
+        <p>Döngü toplamının, asal sayının karesine oranının <strong>1/2</strong>'ye yaklaştığı gözlemlenebilir.</p>
+        <h2>Yapılabilecekler</h2>
+        <p>
+            Liseden beri bakmadım bu konuya, zaten basit bir fikri var.<br>
+            Bütün eşitlikler Üçgensel sayıların doğası ve modüler Aritmetiğin doğası ile açıklanabilir sanıyorum. pek
+            ilginç bir şey yok sanırsam.
+        </p>
+    </article>
+    <figure>
+        <img src="images/UCKDicinTurk.jpg" alt="Türkler" style="max-width: 100%; height: auto;">
+    </figure>
+    <p><a href="images/UCKDicinTurk.jpg" download>Türkler Görselini İndir</a></p>
 </section>

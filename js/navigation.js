@@ -9,7 +9,7 @@ window.navigation = (() => {
         { name: "RMBiVD", textKey: "nav_RMBiVD", file: "html/RMBiVD.html", icon: "images/mavitop_16x16.png" },
         { name: "PSPp", text: "WIP PSP+", file: "html/Pspp.html", icon: "images/pulumsu_16x16.png" },
         { name: "Agac", text: "WIP Ağaç", file: "html/Agac.html", icon: "images/agacimsi_16x16.png" },
-        { name: "USD", text: "WIP USD", file: "html/UcgenSayDong.html", icon: "images/cizgiler_16x16.png" },
+        { name: "USD", text: "USKD", file: "html/UcgenSayDong.html", icon: "images/cizgiler_16x16.png" },
         { name: "SSMT", text: "WIP SSMT", file: "html/SSMT.html", icon: "images/tank_16x16.png" },
         { name: "MH", text: "WIP MontyHall", file: "html/MontyHall.html", icon: "images/kapı_16x16.png" },
         { name: "FT", text: "WIP FormulTahmin", file: "html/FormTahm.html", icon: "images/253_16x16.png" },
