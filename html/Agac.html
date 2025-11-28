@@ -26,12 +26,38 @@
 
         Önce durumu anlamak için basit ortamları analiz edeceğiz<br>
         daha sonra ise genel formuller oluşturmaya çalışacağız.<br>
-
-
-
-
     </p>
-
-
+    <figure>
+        <img src="images/AgacBasitbirornek01.png" alt="Basit Örnek" style="max-width: 150%; height: auto;">
+    </figure>
+    <p><a href="images/AgacBasitbirornek01.png" download>Basit Örneği İndir</a></p>
+    <p>evet durum basit. yukarı giderse kazanır aşağı giderse kaybeder. başlangıçtan başlar sonlarda biter.</p>
+    <p>eğer ağacı böyle binary şekilde büyütürsek sonuçlar aşikar. ve eğer 2 yerine 3 kol veya 1 kol varsa da sonuçlar
+        aşikar.</p>
+    <p>Burada farketmek gereken önemli şeyler 1) Bulunma Oranı (BO) başlangıçta 1 olur ve gittiği yönler miktarı kaçsa
+        (ki
+        bu basit örnekte 2) ona bölünür ve gittiği yöne eklenir. 2) Kazanma oranları ise Kazan ve Kaybet noktalarından
+        doğar ve kendisine gelen noktaları besler. katsayısı ise gittiği noktanın yavru sayısına bölünerek bulunur.</p>
+    <figure>
+        <img src="images/AgacBasitbirornek02.png" alt="2. Basit Örnek" style="max-width: 150%; height: auto;">
+    </figure>
+    <p><a href="images/AgacBasitbirornek02.png" download>2.Basit Örneği İndir</a></p>
+    <p>Evet bu şekilde oluşacak tüm ağaçların nasıl gittiğini bilebiliriz.</p>
+    <p>e pekii bu konunun zorluğu nerede ne yani bölü 2 bölü 3 eeee başka</p>
+    <p>hmm ya yollardan birini tercih edip tekrardan önceden geçmiş olduğu noktaya tekrar gelirse nolur?</p>
+    <p>Döngü durumlarında KO ve BO hesaplamak için 2 farklı değişken atamak lazım her nokta için;</p>
+    <p>BO= gelen noktaların BO*geldiği noktanın çocuk miktarı. KO= gittiği noktaların KO*kendi çocuk miktarı.</p>
+    <p>Baş BO özel olarak +1 alır ve artık bulunma oranı olmaz bulunma miktarı olur çünkü %200 ihtimal olmaz. ortalama 2
+        kere bulunma olur.</p>
+    <figure>
+        <img src="images/Agacornekdongu01.png" alt="1. Döngü Örneği" style="max-width: 150%; height: auto;">
+    </figure>
+    <p><a href="images/Agacornekdongu01.png" download>1.Döngü Örneği İndir</a></p>
+    <p>Baş BM = 1+gelen dedik, A dan geliyor %50 ile yani b=1+(a/2) ve a=b/2</p>
+    <p>1+a/2=2a yani 2+a=4a ve a=2/3 ve böylelikle b=4/3</p>
+    <p>ve KO için BaşKO=AKO/2 ve AKO = 0.5+BaşKO/2 <br>
+        böylelikle BaşKO=(0.5+BaşKO/2)/2 yani 4BaşKO=1+BaşKO <br>
+        ve Başko=1/3 böylelikle AKO=1/2+1/6=2/3</p>
+    <p>Burada döngü sonsuza giden sigma toplamı gibi davranır. sum a*r^i gibi.</p>
 
 </section>
