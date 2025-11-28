@@ -1,7 +1,7 @@
-@import url("modules/_base.css");
-@import url("modules/_layout.css");
-@import url("modules/_header.css");
-@import url("modules/_navigation.css");
-@import url("modules/_language-switcher.css");
-@import url("modules/_theme-switcher.css");
-@import url("modules/_main-content.css");
+@import url("modules/base.css");
+@import url("modules/layout.css");
+@import url("modules/header.css");
+@import url("modules/navigation.css");
+@import url("modules/language-switcher.css");
+@import url("modules/theme-switcher.css");
+@import url("modules/main-content.css");
