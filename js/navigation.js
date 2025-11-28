@@ -13,21 +13,23 @@ window.navigation = (() => {
         { name: "SSMT", text: "WIP SSMT", file: "html/SSMT.html", icon: "images/tank_16x16.png" },
         { name: "MH", text: "WIP MontyHall", file: "html/MontyHall.html", icon: "images/kapı_16x16.png" },
         { name: "FT", text: "WIP FormulTahmin", file: "html/FormTahm.html", icon: "images/253_16x16.png" },
-		{
+        {
           name: "algoritmalar",
           textKey: "nav_algoritmalar",
           icon: "images/algoritmalar_16x16.png",
-          children: []
+          children: [
+            { name: "PSPp", text: "WIP PSP+", file: "html/Pspp.html", icon: "images/pulumsu_16x16.png" }
+          ]
         }
       ]
     },
     {
-        name: "gundelik-hayat",
-        textKey: "nav_gundelik_hayat",
-        icon: "images/gundelik_16x16.png",
-        children: [
-            { name: "meyve_suyu", textKey: "nav_meyve_suyu", file: "html/Gündelik Hayat/meyve_suyu.html", icon: "images/meyvesuyu_16x16.png" }
-        ]
+      name: "gundelik-hayat",
+      textKey: "nav_gundelik_hayat",
+      icon: "images/gundelik_16x16.png",
+      children: [
+        { name: "meyve_suyu", textKey: "nav_meyve_suyu", file: "html/Gündelik Hayat/meyve_suyu.html", icon: "images/meyvesuyu_16x16.png" }
+      ]
     },
     { name: "iletisim", textKey: "nav_iletisim", file: "html/iletisim.html", icon: "images/hi_16x16.png" }
   ];
@@ -43,7 +45,7 @@ window.navigation = (() => {
         const toggle = document.createElement('button');
         toggle.className = 'nav-folder-toggle link';
         toggle.setAttribute('aria-expanded', 'false');
-        
+
         const toggleText = document.createElement('span');
         toggle.appendChild(toggleText);
 
@@ -62,8 +64,8 @@ window.navigation = (() => {
         content.hidden = true;
 
         toggle.addEventListener('click', () => {
-            const isExpanded = content.hidden = !content.hidden;
-            toggle.setAttribute('aria-expanded', !isExpanded);
+          const isExpanded = content.hidden = !content.hidden;
+          toggle.setAttribute('aria-expanded', !isExpanded);
         });
 
         folder.appendChild(toggle);
@@ -93,22 +95,22 @@ window.navigation = (() => {
 
   function setActive(name) {
     links.forEach(({ el, page, isFolder, contentEl }) => {
-        if (isFolder) {
-            const isChildActive = page.children.some(child => child.name === name);
-            if (isChildActive) {
-                contentEl.hidden = false;
-                el.setAttribute('aria-expanded', 'true');
-            }
-            el.classList.remove('active');
-        } else {
-            const isActive = page.name === name;
-            el.classList.toggle('active', isActive);
-            if (isActive) {
-                el.setAttribute('aria-current', 'page');
-            } else {
-                el.removeAttribute('aria-current');
-            }
+      if (isFolder) {
+        const isChildActive = page.children.some(child => child.name === name);
+        if (isChildActive) {
+          contentEl.hidden = false;
+          el.setAttribute('aria-expanded', 'true');
         }
+        el.classList.remove('active');
+      } else {
+        const isActive = page.name === name;
+        el.classList.toggle('active', isActive);
+        if (isActive) {
+          el.setAttribute('aria-current', 'page');
+        } else {
+          el.removeAttribute('aria-current');
+        }
+      }
     });
   }
 

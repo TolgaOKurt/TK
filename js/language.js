@@ -32,7 +32,7 @@ window.language = (() => {
   function getTranslationPageName(pageName) {
     const pageInfo = window.navigation.getPageInfo(pageName);
     if (!pageInfo || pageInfo.children) {
-        return pageName;
+      return pageName;
     }
     return pageInfo.file.split('/')[1].replace('.html', '');
   }
@@ -44,7 +44,7 @@ window.language = (() => {
 
     const sharedTr = await fetchTranslationFile(`lang/shared/${lang}.json`) || {};
     const pageTr = await fetchTranslationFile(`lang/${translationPageName}/${lang}.json`) || {};
-    
+
     translations[langKey] = { ...sharedTr, ...pageTr };
   }
 
@@ -91,13 +91,13 @@ window.language = (() => {
     scope.querySelectorAll('[data-i18n-content]').forEach(el => el.content = getTranslation(el.dataset.i18nContent));
 
     window.navigation.links.forEach(({ el, page }) => {
-        const text = page.textKey ? getTranslation(page.textKey) : page.text;
-        const icon = el.querySelector('.nav-icon');
-        const textContainer = el.matches('.nav-folder-toggle') ? el.querySelector('span') : el;
-        if (textContainer) {
-            textContainer.textContent = text + ' ';
-            if (icon) textContainer.appendChild(icon);
-        }
+      const text = page.textKey ? getTranslation(page.textKey) : page.text;
+      const icon = el.querySelector('.nav-icon');
+      const textContainer = el.matches('.nav-folder-toggle') ? el.querySelector('span') : el;
+      if (textContainer) {
+        textContainer.textContent = text + ' ';
+        if (icon) textContainer.appendChild(icon);
+      }
     });
 
     const themeBtn = document.getElementById('theme-toggle');
@@ -142,14 +142,14 @@ window.language = (() => {
   async function setLanguage(lang) {
     currentLang = lang;
     const name = location.hash.replace('#', '') || "anasayfa";
-    
+
     await loadLanguageForPage(currentLang, name);
     if (currentLang !== 'en') await loadLanguageForPage('en', name);
     if (currentLang !== 'tr') await loadLanguageForPage('tr', name);
 
     localStorage.setItem('lang', currentLang);
     document.documentElement.lang = currentLang;
-    
+
     applyTranslations(document);
   }
 
@@ -219,11 +219,11 @@ window.language = (() => {
       header.appendChild(note);
     }
   }
-  
+
   function getCurrentLang() {
     return currentLang;
   }
-  
+
   function setCurrentLang(lang) {
     currentLang = lang;
   }

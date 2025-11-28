@@ -1,5 +1,5 @@
 /* Tema toggle butonu */
-.theme-toggle{
+.theme-toggle {
   margin-left: 12px;
   font-size: 14px;
   padding: 6px 10px;
@@ -9,4 +9,7 @@
   color: var(--text);
   cursor: pointer;
 }
-.theme-toggle:hover{ border-color: var(--orange); }
+
+.theme-toggle:hover {
+  border-color: var(--orange);
+}

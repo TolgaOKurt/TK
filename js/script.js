@@ -14,16 +14,16 @@
   function initHeaderLink() {
     const h1 = document.querySelector('header h1');
     if (h1 && h1.textContent === 'Tolga Kurt') {
-        h1.innerHTML = ''; // Clear the h1
-        const link = document.createElement('a');
-        link.href = '#anasayfa';
-        link.textContent = 'Tolga Kurt';
-        link.className = 'header-title-link';
-        link.addEventListener('click', e => {
-            e.preventDefault();
-            location.hash = link.getAttribute('href');
-        });
-        h1.appendChild(link);
+      h1.innerHTML = ''; // Clear the h1
+      const link = document.createElement('a');
+      link.href = '#anasayfa';
+      link.textContent = 'Tolga Kurt';
+      link.className = 'header-title-link';
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        location.hash = link.getAttribute('href');
+      });
+      h1.appendChild(link);
     }
   }
 
@@ -44,7 +44,7 @@
           a.setAttribute('rel', rel.filter(Boolean).join(' ').trim());
           if (!a.getAttribute('target')) a.setAttribute('target', '_blank');
         }
-      } catch (_) {}
+      } catch (_) { }
     });
   }
 
@@ -67,7 +67,7 @@
       link.addEventListener('click', async (e) => {
         e.preventDefault();
         if (navigator.share) {
-          try { await navigator.share({ title: 'WebsiteOfTK', text: 'WebsiteOfTK', url: shareUrl }); } catch (_) { try { await navigator.clipboard.writeText(shareUrl); } catch (_) {} }
+          try { await navigator.share({ title: 'WebsiteOfTK', text: 'WebsiteOfTK', url: shareUrl }); } catch (_) { try { await navigator.clipboard.writeText(shareUrl); } catch (_) { } }
         } else {
           try {
             await navigator.clipboard.writeText(shareUrl);
@@ -93,7 +93,7 @@
     await loadLanguageForPage(currentLang, name);
     if (currentLang !== 'en') await loadLanguageForPage('en', name);
     if (currentLang !== 'tr') await loadLanguageForPage('tr', name);
-    
+
     contentEl.classList.remove('show');
     contentEl.classList.add('fade');
     try {
@@ -153,7 +153,7 @@
 
     const savedLang = localStorage.getItem('lang');
     const browserLang = navigator.language.split('-')[0];
-    const supported = ['tr','en','ja','zh','es','it','fr','de','ru','el','ko'];
+    const supported = ['tr', 'en', 'ja', 'zh', 'es', 'it', 'fr', 'de', 'ru', 'el', 'ko'];
     const currentLang = savedLang || (supported.includes(browserLang) ? browserLang : 'tr');
     setCurrentLang(currentLang);
     document.documentElement.lang = currentLang;
