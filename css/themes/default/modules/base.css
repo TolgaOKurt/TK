@@ -1,3 +1,35 @@
+/*
+ * İÇİNDEKİLER
+ * =============================================================================
+ * 1. DEĞİŞKENLER (VARIABLES)
+ *    - :root .......................... Genel renkler, boşluklar ve yapılandırma
+ *    - [data-theme="dark"] ............ Karanlık mod renk tanımları
+ *
+ * 2. TEMEL AYARLAR (RESET & BASE)
+ *    - * .............................. Box-sizing sıfırlama
+ *    - body ........................... Ana font, arka plan, renk ve düzen
+ *
+ * 3. TİPOGRAFİ (TYPOGRAPHY)
+ *    - kbd, samp ...................... Font ailesi mirası
+ *    - h1, h2, h3, h4, h5, h6 ......... Başlık stilleri, boyutlar ve renkler
+ *    - p, pre ......................... Paragraf ve ön biçimli metin ayarları
+ *    - strong, em ..................... Kalın ve italik vurgu renkleri
+ *    - blockquote ..................... Alıntı blokları ve kenarlık stilleri
+ *    - ul, ol, li ..................... Liste düzeni ve boşluklar
+ *    - code ........................... Kod blokları için font ve arka plan
+ *
+ * 4. BAĞLANTILAR (LINKS)
+ *    - a .............................. Link renkleri ve hover efektleri
+ *    - Dark Mode ...................... Karanlık mod için link uyarlamaları
+ *
+ * 5. MEDYA VE GÖRSELLER (MEDIA)
+ *    - img.res ........................ Responsive görsel sınıfı
+ *
+ * 6. YARDIMCI SINIFLAR (UTILITIES)
+ *    - .visually-hidden ............... Erişilebilirlik için gizli içerik
+ * =============================================================================
+*/
+
 :root {
   /*renkler önden belirlendi*/
   --bg: rgb(255, 245, 235);

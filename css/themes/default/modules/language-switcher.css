@@ -1,3 +1,24 @@
+/*
+ * İÇİNDEKİLER
+ * =============================================================================
+ * 1. BİLGİLENDİRME (NOTIFICATIONS)
+ *    - .ai-note ....................... Yapay zeka çeviri notu
+ *
+ * 2. DROPDOWN YAPISI
+ *    - .lang-dropdown ................. Ana konteyner
+ *    - .lang-trigger .................. Açılır menü tetikleyici butonu
+ *    - .lang-menu ..................... Açılır menü kutusu ve gölgelendirme
+ *
+ * 3. SEÇENEKLER (OPTIONS)
+ *    - .lang-option ................... Dil seçeneği öğeleri
+ *    - .active ........................ Seçili dil vurgusu
+ *
+ * 4. İKONLAR (ICONS)
+ *    - .flag-icon ..................... Bayrak görselleri boyutlandırma
+ * =============================================================================
+*/
+
+
 /* Dil notu (AI çeviri) */
 .ai-note {
   margin-left: 8px;

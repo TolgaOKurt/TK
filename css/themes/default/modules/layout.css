@@ -1,3 +1,16 @@
+/*
+ * İÇİNDEKİLER
+ * =============================================================================
+ * 1. SAYFA DÜZENİ (LAYOUT)
+ *    - .wrap .......................... Ana grid yapısı ve boşluklar
+ *
+ * 2. DUYARLILIK (RESPONSIVE)
+ *    - @media (max-width:950px) ....... Mobil ve tablet uyarlamaları
+ *    - nav#nav ........................ Mobil menü düzeni
+ * =============================================================================
+ */
+
+
 /* düzen */
 .wrap {
   max-width: var(--maxwidth);

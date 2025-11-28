@@ -1,3 +1,22 @@
+/*
+ * İÇİNDEKİLER
+ * =============================================================================
+ * 1. NAVİGASYON (NAVIGATION)
+ *    - nav#nav ........................ Menü konteyneri
+ *
+ * 2. BAĞLANTILAR (LINKS)
+ *    - .link .......................... Menü öğeleri stilleri
+ *    - :hover, .active ................ Etkileşim ve aktif durumlar
+ *    - :focus-visible ................. Klavye erişilebilirliği
+ *
+ * 3. KLASÖR YAPISI (FOLDERS)
+ *    - .nav-folder-content ............ Alt menü içeriği ve geçişler
+ *    - .nav-folder-toggle ............. Klasör açma/kapama butonu
+ *    - İkonlar ........................ Klasör ve menü ikonları
+ * =============================================================================
+*/
+
+
 nav#nav {
   align-self: start;
   padding-top: 6px;
