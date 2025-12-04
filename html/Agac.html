@@ -1,126 +1,216 @@
 <section>
-    <h2>YAPIM AŞAMASINDA!</h2>
-    <h1>Ağaç</h1>
-    <p>
+    <header>
+        <h2>YAPIM AŞAMASINDA!</h2>
+        <h1>Ağaç ve Markov Zincirleri</h1>
+    </header>
 
-        <a href="https://github.com/TolgaOKurt/Ugraslar/blob/main/PreSept25/Agac.c" target="_blank">Agac.c</a> olarak
-        isimlendirdiğim kısım<br>
+    <article>
+        <p>
+            Bu bölüm, <a href="https://github.com/TolgaOKurt/Ugraslar/blob/main/PreSept25/Agac.c"
+                target="_blank">Agac.c</a> dosyasında temelini attığım "Markov zinciri?" incelemelerini, ağaç yollarını
+            ve
+            ilgili matematiksel eşitlikleri konu almaktadır.
+        </p>
 
-        Markov incelemeleri.<br>
-        Agac yolu ve eşitlikler.<br>
+        <h3>Temel Kavramlar</h3>
+        <p>
+            Durumlar, pozisyonlar veya noktalar... İsimlendirme ne olursa olsun, temel soru şudur: <strong>Bir noktadan
+                diğerine geçiş ihtimali nedir?</strong> Rastgele hareket eden bir oyuncunun (random walker) akıbeti ne
+            olacaktır? Sonsuz döngülerde mi sıkışacak, yoksa bir sonuca mı ulaşacaktır?
+        </p>
 
+        <p>Analiz ortamımızı şu üç temel nokta türü üzerine kuralım:</p>
+        <ul>
+            <li><strong>Başlangıç Noktası:</strong> Analizin başladığı, kesinlikle (olasılık = 1) bulunduğumuz noktadır.
+                İlerleyen adımlarda tekrar bu noktaya dönülmesi mümkün olabilir.</li>
+            <li><strong>Zafer Noktası:</strong> Hedefe ulaşılan noktadır. Yolculuk burada sona erer ve 1 puan kazanılır.
+            </li>
+            <li><strong>Mağlubiyet Noktası:</strong> Kaybedilen noktadır. Yolculuk burada sona erer ve 0 puan kazanılır.
+            </li>
+        </ul>
 
+        <p>
+            Önce durumu anlamak için basit ortamları analiz edecek, ardından genel formüller oluşturmaya çalışacağız.
+        </p>
 
-        Durumlar veya pozisyonlar veya noktalar...<br>
-        Nasıl derseniz diyin, bir yerden bir yere gitmenin ihtimali nedir?<br>
-        Rastgele hareket eden(Davranan) bir oyuncunun geleceği ne olur?<br>
-        Sıkışıp döngülerde mi kalır?<br>
-        hadi ortamı oluşturalım.<br>
+        <h3>Basit Ortam Analizi</h3>
+        <figure>
+            <img src="images/AgacBasitbirornek01.png" alt="Basit Ağaç Örneği" style="max-width: 100%; height: auto;">
+            <figcaption><a href="images/AgacBasitbirornek01.png" download>Basit Örneği İndir</a></figcaption>
+        </figure>
 
-        Bir başlangıç noktamız olacak bir zafer noktası bir de Mağlubiyet.<br>
+        <p>
+            Bu basit örnekte durum açıktır: Yukarı giden kazanır, aşağı giden kaybeder. Başlangıçtan başlar ve uç
+            noktalarda biter. Ağaç ikili (binary) yapıda büyüse de, farklı sayıda kollara ayrılsa da sonuçlar aşikardır.
+        </p>
 
-        Normal noktalardan farkları nedir bu noktaların inceleyelim.<br>
-        Başlangıç noktası Kesinlikle bulunacağımız bir nokta, belki tekrardan da geliriz.<br>
-        Zafer ise kazandığımız noktadır. Yolculuk sona ermiştir. 1 Puan kazanmışızdır.<br>
-        Mağlubiyet ise kaybettiğimiz noktadır. Yolculuk sona ermiştir. 0 Puan kazanmışızdır.<br>
+        <div class="note">
+            <strong>Önemli Gözlemler:</strong>
+            <ol>
+                <li><strong>Bulunma Oranı (BO):</strong> Başlangıçta 1'dir. Gidilen yön sayısına (bu örnekte 2)
+                    bölünerek dağılır ve gidilen yöne eklenir.</li>
+                <li><strong>Kazanma Oranı (KO):</strong> Zafer (1) ve Mağlubiyet (0) noktalarından doğar, geriye doğru
+                    beslenir. Katsayısı, gittiği noktanın çocuk sayısına bölünerek bulunur.</li>
+            </ol>
+        </div>
 
-        Önce durumu anlamak için basit ortamları analiz edeceğiz<br>
-        daha sonra ise genel formuller oluşturmaya çalışacağız.<br>
-    </p>
-    <figure>
-        <img src="images/AgacBasitbirornek01.png" alt="Basit Örnek" style="max-width: 150%; height: auto;">
-    </figure>
-    <p><a href="images/AgacBasitbirornek01.png" download>Basit Örneği İndir</a></p>
-    <p>evet durum basit. yukarı giderse kazanır aşağı giderse kaybeder. başlangıçtan başlar sonlarda biter.</p>
-    <p>eğer ağacı böyle binary şekilde büyütürsek sonuçlar aşikar. ve eğer 2 yerine 3 kol veya 1 kol varsa da sonuçlar
-        aşikar.</p>
-    <p>Burada farketmek gereken önemli şeyler 1) Bulunma Oranı (BO) başlangıçta 1 olur ve gittiği yönler miktarı kaçsa
-        (ki
-        bu basit örnekte 2) ona bölünür ve gittiği yöne eklenir. 2) Kazanma oranları ise Kazan ve Kaybet noktalarından
-        doğar ve kendisine gelen noktaları besler. katsayısı ise gittiği noktanın yavru sayısına bölünerek bulunur.</p>
-    <figure>
-        <img src="images/AgacBasitbirornek02.png" alt="2. Basit Örnek" style="max-width: 150%; height: auto;">
-    </figure>
-    <p><a href="images/AgacBasitbirornek02.png" download>2.Basit Örneği İndir</a></p>
-    <p>Evet bu şekilde oluşacak tüm ağaçların nasıl gittiğini bilebiliriz.</p>
-    <p>e pekii bu konunun zorluğu nerede ne yani bölü 2 bölü 3 eeee başka</p>
-    <p>hmm ya yollardan birini tercih edip tekrardan önceden geçmiş olduğu noktaya tekrar gelirse nolur?</p>
-    <p>Döngü durumlarında KO ve BO hesaplamak için 2 farklı değişken atamak lazım her nokta için;</p>
-    <p>BO= gelen noktaların BO*geldiği noktanın çocuk miktarı. KO= gittiği noktaların KO*kendi çocuk miktarı.</p>
-    <p>Baş BO özel olarak +1 alır ve artık bulunma oranı olmaz bulunma miktarı olur çünkü %200 ihtimal olmaz. ortalama 2
-        kere bulunma olur.</p>
-    <figure>
-        <img src="images/Agacornekdongu01.png" alt="1. Döngü Örneği" style="max-width: 125%; height: auto;">
-    </figure>
-    <p><a href="images/Agacornekdongu01.png" download>1.Döngü Örneği İndir</a></p>
-    <p>Baş BM = 1+gelen dedik, A dan geliyor %50 ile yani b=1+(a/2) ve a=b/2</p>
-    <p>1+a/2=2a yani 2+a=4a ve a=2/3 ve böylelikle b=4/3</p>
-    <p>ve KO için BaşKO=AKO/2 ve AKO = 0.5+BaşKO/2 <br>
-        böylelikle BaşKO=(0.5+BaşKO/2)/2 yani 4BaşKO=1+BaşKO <br>
-        ve Başko=1/3 böylelikle AKO=1/2+1/6=2/3</p>
-    <p>Burada döngü sonsuza giden sigma toplamı gibi davranır. sum a*r^i gibi.</p>
+        <figure>
+            <img src="images/AgacBasitbirornek02.png" alt="İkinci Basit Örnek" style="max-width: 100%; height: auto;">
+            <figcaption><a href="images/AgacBasitbirornek02.png" download>2. Basit Örneği İndir</a></figcaption>
+        </figure>
 
-    <figure>
-        <img src="images/Agacornekdongu02.png" alt="1. Döngü Açık Örneği" style="max-width: 125%; height: auto;">
-    </figure>
-    <p><a href="images/Agacornekdongu02.png" download>1.Döngü Açık Örneği İndir</a></p>
+        <p>Bu şekilde oluşacak tüm ağaçların akışını takip edebiliriz. Ancak konunun asıl zorluğu ve derinliği, basit
+            dallanmalarda değil, döngülerde yatmaktadır.</p>
 
-    <p> Başko'nun 1/3 olmasının sebebini açıklayalım, bulunma miktarını hesaplarken git gel değeri 1/2*1/2=1/4tür bunu
-        sonsuz kez yapabilir, 1+1/4+1/16.... yani sigma sum 4^-n as n=0 to infinity yani 4/3 ya da kısaca 1/(1-(1/4))
-        den 4/3. </p>
-    <p>kazanma oranını da a merkezli hesaplarsak 1/2 direkt kazan 1/4 geri dönüş 1/2 kazanış yani (1/2)*(1+1/4....4^-n)
-        ve (4/3)*(1/2)=2/3</p>
-    <p>Bulmuş olduğum formulleri buraya diziyorum şimdi.</p>
+        <h3>Döngüsel Durumlar (Loops)</h3>
+        <p>
+            Ya yollardan biri, bizi daha önce geçtiğimiz bir noktaya geri götürürse?
+        </p>
+        <p>
+            Döngü durumlarında <strong>Kazanma Oranı (KO)</strong> ve <strong>Bulunma Miktarı (BM)</strong> hesaplamak
+            için her nokta için denklemler kurmamız gerekir:
+        </p>
+        <ul>
+            <li><strong>BM (Bulunma Miktarı) =</strong> $\sum$ (Gelen noktaların BM'si × Geldiği noktanın çocuk
+                miktarına bölümü)</li>
+            <li><strong>KO (Kazanma Oranı) =</strong> $\sum$ (Gittiği noktaların KO'su / Kendi çocuk miktarı)</li>
+        </ul>
+        <p>
+            <em>Not: Başlangıç noktasının BM'sine özel olarak +1 eklenir. Artık "bulunma oranı" değil "bulunma miktarı"
+                kavramını kullanırız, çünkü döngüler nedeniyle bir noktada bulunma beklentisi %100'ü (1.0) aşabilir.
+                Örneğin ortalama 2 kere bulunma gibi.</em>
+        </p>
 
-    <p>kazanma oranı = toplam(gitme ihtimali*gidilen noktanın kazanma oranı)</p>
-    <p>Bulunma miktarı= toplam(gelme ihtimali*gelen noktanın bulunma miktarı) </p>
-    <p>Bulunma miktarı= en az bir kere bulunma ihtimali * kendine gelme miktarı</p>
-    <p>kendine gelme miktarı= 1/(1-kendine en az bir kere gelme ihtimali)</p>
-    <p>kendine gelme miktarı = bulunma miktarı/en az bir kere bulunma ihtimali</p>
-    <p>sadece N kere gelme ihtimali = en az bir kere bulunma ihtimali*(1-kendine gelme miktarı)*kendine gelme
-        miktarı^(n-1) </p>
-    <p>bu eşitlikler kullanılarak farklı eşitlikler oluşturulabilir.</p>
+        <figure>
+            <img src="images/Agacornekdongu01.png" alt="Döngü Örneği" style="max-width: 100%; height: auto;">
+            <figcaption><a href="images/Agacornekdongu01.png" download>1. Döngü Örneği İndir</a></figcaption>
+        </figure>
 
-    <p>kazanma oranları ve kendine gelme oranları başlangıç noktasından bağımsız haritanın hali ile alakalıdır. bulunma
-        miktarları ise başlangıç noktasına bağımlıdır.</p>
-    <p>bu konuya ben ağaç diyorum. ve konu üzerinde sub-ağaç analizleri ve farklı ağaç türleri üzerine analizlerim
-        bulunmakta ama aşikar ve basit bir konu gibi gözüktüğü için buraya hepsini eklemeyeceğim.</p>
-    <p> Aşağıya rastgele bir ağaç koyuyorum ve okuyan varsa öpüyorum.</p>
-    <p>KO=kazanma oranı<br>
-        BM=bulunma miktarı<br>
-        Ea1KBO=en az bir kere bulunma oranı<br>
-        K1GO=kendine bir kere gelme oranı<br>
-        KGM=kendine gelme miktarı<br>
-        SBKBO=sadece bir kere bulunma oranı</p>
+        <h4>Hesaplama Örneği</h4>
+        <p>
+            Başlangıç noktasına $b$, diğer noktaya $a$ diyelim. $a$, $b$'den %50 ihtimalle gelinen bir noktadır.
+            <br>
+            $b = 1 + (a/2)$
+            <br>
+            $a = b/2$
+        </p>
+        <p>
+            Denklemleri çözürsek:
+            <br>
+            $1 + a/2 = 2a \Rightarrow 2 + a = 4a \Rightarrow 3a = 2 \Rightarrow a = 2/3$
+            <br>
+            Böylece $b = 4/3$ bulunur.
+        </p>
+        <p>
+            Kazanma Oranı (KO) hesabı için:
+            <br>
+            $BaşKO = AKO/2$
+            <br>
+            $AKO = 0.5 + BaşKO/2$
+            <br>
+            Yerine koyarsak: $BaşKO = (0.5 + BaşKO/2) / 2 \Rightarrow 4 \times BaşKO = 1 + BaşKO$
+            <br>
+            Sonuç: $BaşKO = 1/3$ ve $AKO = 1/2 + 1/6 = 2/3$
+        </p>
 
+        <p>
+            Burada döngü, sonsuza giden bir geometrik dizi toplamı (sigma) gibi davranır: $\sum a \cdot r^i$.
+        </p>
 
-    <figure>
-        <img src="images/Agacornek1.png" alt="Örnek" style="max-width: 125%; height: auto;">
-    </figure>
-    <p><a href="images/Agacornek1.png" download>Örneği İndir</a></p>
-    <p>ay bu ağaç da tırtmış. neyseee bunu koymuş oldum. bu örnekte kaybetme yolu açılmış, diğer örneklerim daha iyi.
-        amaaaaaan</p>
+        <figure>
+            <img src="images/Agacornekdongu02.png" alt="Açık Döngü (Hesaplanmış) Örneği"
+                style="max-width: 100%; height: auto;">
+            <figcaption><a href="images/Agacornekdongu02.png" download>1. Döngü (Hesaplanmış) Örneği İndir</a>
+            </figcaption>
+        </figure>
 
+        <h3>Matematiksel Açıklama</h3>
+        <p>
+            Başlangıç noktasının (BaşKO) $1/3$ olmasının sebebini açıklayalım. Bulunma miktarını hesaplarken git-gel
+            değeri $(1/2 \times 1/2) = 1/4$'tür. Bu döngü sonsuz kez tekrarlanabilir.
+        </p>
+        <p>
+            Toplam = $1 + 1/4 + 1/16 + \dots = \sum_{n=0}^{\infty} (1/4)^n$
+        </p>
+        <p>
+            Sonsuz geometrik dizi toplam formülü $\frac{1}{1-r}$ kullanılarak: $\frac{1}{1 - 1/4} = \frac{1}{3/4} = 4/3$
+            bulunur.
+        </p>
+        <p>
+            Kazanma oranını da $a$ merkezli hesaplarsak:
+            <br>
+            $1/2$ direkt kazanış, $1/4$ geri dönüş.
+            <br>
+            $(1/2) \times (1 + 1/4 + \dots) = (1/2) \times (4/3) = 2/3$.
+        </p>
 
+        <h3>Özet Formüller ve Tanımlar</h3>
+        <p>Bulmuş olduğum formülleri ve tanımları aşağıda listeliyorum:</p>
 
+        <dl>
+            <dt>Kazanma Oranı (KO)</dt>
+            <dd>Toplam(Gitme İhtimali × Gidilen Noktanın Kazanma Oranı)</dd>
 
-    <figure>
-        <img src="images/agacChatGPT.png" alt="Örnek" style="max-width: 125%; height: auto;">
-    </figure>
-    <p><a href="images/agacChatGPT.png" download>ChatGPT Görseli İndir</a></p>
-    <figure>
-        <img src="images/agacGemini.png" alt="Örnek" style="max-width: 125%; height: auto;">
-    </figure>
-    <p><a href="images/agacGemini.png" download>Gemini Görseli İndir</a></p>
-    <figure>
-        <img src="images/agaczimage.jpeg" alt="Örnek" style="max-width: 125%; height: auto;">
-    </figure>
-    <p><a href="images/agaczimage.jpeg" download> Z-Image Görseli İndir</a></p>
+            <dt>Bulunma Miktarı (BM)</dt>
+            <dd>Toplam(Gelme İhtimali × Gelen Noktanın Bulunma Miktarı)</dd>
+            <dd>Alternatif: En az bir kere bulunma ihtimali × Kendine gelme miktarı</dd>
 
+            <dt>Kendine Gelme Miktarı (KGM)</dt>
+            <dd>$\frac{1}{1 - \text{Kendine En Az Bir Kere Gelme İhtimali}}$</dd>
+            <dd>Alternatif: Bulunma Miktarı / En Az Bir Kere Bulunma İhtimali</dd>
 
+            <dt>Sadece N Kere Gelme İhtimali</dt>
+            <dd>En Az Bir Kere Bulunma İhtimali × $(1 - \text{Kendine Gelme Miktarı}) \times
+                \text{Kendine Gelme Miktarı}^{n-1}$</dd>
+        </dl>
 
+        <p>
+            <strong>Not:</strong> Kazanma oranları ve kendine gelme oranları, başlangıç noktasından bağımsız olarak
+            haritanın yapısı ile alakalıdır. Bulunma miktarları ise başlangıç noktasına bağımlıdır.
+        </p>
 
+        <p>
+            Bu konu üzerine alt-ağaç analizleri ve farklı ağaç türleri üzerine çalışmalarım bulunmakta, ancak temel
+            mantık yukarıdaki gibidir.
+        </p>
 
+        <h3>Kısaltmalar</h3>
+        <ul>
+            <li><strong>KO:</strong> Kazanma Oranı</li>
+            <li><strong>BM:</strong> Bulunma Miktarı</li>
+            <li><strong>Ea1KBO:</strong> En Az Bir Kere Bulunma Oranı</li>
+            <li><strong>K1GO:</strong> Kendine Bir Kere Gelme Oranı</li>
+            <li><strong>KGM:</strong> Kendine Gelme Miktarı</li>
+            <li><strong>SBKBO:</strong> Sadece Bir Kere Bulunma Oranı</li>
+        </ul>
 
+        <h3>Ek Görseller</h3>
+        <figure>
+            <img src="images/Agacornek1.png" alt="Karmaşık Ağaç Örneği" style="max-width: 100%; height: auto;">
+            <figcaption><a href="images/Agacornek1.png" download>Örneği İndir</a> - Kaybetme yolunun geniş olduğu bir
+                örnek.
+            </figcaption>
+        </figure>
+        <h2>Yapılabilecekler</h2>
+        <p>
+            Markov zincirlerini araştırmak. Bu yazıyı okuyan biri varsa sevgilerle... 04.12.25
+        </p>
+
+        <div class="gallery"
+            style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px;">
+            <figure>
+                <img src="images/agacChatGPT.png" alt="ChatGPT Görseli" style="max-width: 300px; height: auto;">
+                <figcaption><a href="images/agacChatGPT.png" download>ChatGPT Görseli İndir</a></figcaption>
+            </figure>
+            <figure>
+                <img src="images/agacGemini.png" alt="Gemini Görseli" style="max-width: 300px; height: auto;">
+                <figcaption><a href="images/agacGemini.png" download>Gemini Görseli İndir</a></figcaption>
+            </figure>
+            <figure>
+                <img src="images/agaczimage.jpeg" alt="Z-Image Görseli" style="max-width: 300px; height: auto;">
+                <figcaption><a href="images/agaczimage.jpeg" download>Z-Image Görseli İndir</a></figcaption>
+            </figure>
+        </div>
+    </article>
 
 </section>

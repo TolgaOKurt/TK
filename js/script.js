@@ -108,6 +108,14 @@
       }
       contentEl.innerHTML = html;
 
+      if (window.MathJax) {
+        try {
+          await MathJax.typesetPromise([contentEl]);
+        } catch (err) {
+          console.warn('MathJax error:', err);
+        }
+      }
+
       applyTranslations(document);
 
       contentEl.querySelectorAll('img[data-src]').forEach(img => {
