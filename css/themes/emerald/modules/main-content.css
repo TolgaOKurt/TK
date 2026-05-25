@@ -1,0 +1,103 @@
+/*
+ * İÇİNDEKİLER
+ * =============================================================================
+ * 1. ANA İÇERİK (MAIN CONTENT)
+ *    - main#icerik .................... İçerik alanı temel düzen ayarları
+ *
+ * 2. YARDIMCI ARAÇLAR (UTILITIES)
+ *    - .hint .......................... Şık kesikli alt çizgili ipucu kelimesi
+ *    - .hint::after ................... Modern, bakır renkli küçük ipucu rozeti
+ *    - .info .......................... Zümrüt dolgulu, yuvarlatılmış bilgi kapsülü
+ *
+ * 3. ANİMASYONLAR (ANIMATIONS)
+ *    - .fade .......................... Yumuşak, sinematik geçiş efekti
+ *    - .show .......................... Görünürlük durumu ve milimetrik yukarı kayma
+ * =============================================================================
+ */
+
+main#icerik {
+  padding: 0;
+  min-height: 240px;
+  /* boş sayfalarda yükseklik korur */
+  background: transparent;
+}
+
+.hint {
+  cursor: help;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--orange);
+  border-bottom: 1.5px dashed var(--orange);
+  padding-bottom: 1px;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.hint:hover {
+  opacity: 0.8;
+}
+
+.hint::after {
+  content: "yani?";
+  font-size: 0.7em;
+  margin-left: 6px;
+  color: var(--orange);
+  background: rgba(214, 90, 49, 0.08);
+  border: 1px solid rgba(214, 90, 49, 0.15);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-style: normal;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  transition: all 0.25s ease;
+}
+
+[data-theme="dark"] .hint::after {
+  background: rgba(255, 160, 122, 0.08);
+  border-color: rgba(255, 160, 122, 0.15);
+}
+
+.info {
+  cursor: help;
+  display: inline-flex;
+  align-items: center;
+  background: rgba(16, 92, 59, 0.06);
+  color: var(--maroon);
+  border: 1px solid rgba(16, 92, 59, 0.12);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9em;
+  font-style: normal;
+  transition: all 0.25s ease;
+}
+
+.info:hover {
+  background: rgba(16, 92, 59, 0.1);
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .info {
+  background: rgba(80, 220, 160, 0.06);
+  color: var(--maroon);
+  border-color: rgba(80, 220, 160, 0.12);
+}
+
+[data-theme="dark"] .info:hover {
+  background: rgba(80, 220, 160, 0.1);
+}
+
+/* fade sınıfı JS ile tetikleniyor */
+.fade {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}

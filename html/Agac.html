@@ -1,106 +1,106 @@
 <section>
     <header>
-        <h1>Ağaç ve Markov Zincirleri</h1>
+        <h1 data-i18n="agac_title">Ağaç ve Markov Zincirleri</h1>
     </header>
 
     <article>
-        <p>
+        <p data-i18n="agac_intro" data-i18n-allow-html>
             Bu bölüm, <a href="https://github.com/TolgaOKurt/Ugraslar/blob/main/PreSept25/Agac.c"
                 target="_blank">Agac.c</a> dosyasında temelini attığım "Markov zinciri?" incelemelerini, ağaç yollarını
             ve
             ilgili matematiksel eşitlikleri konu almaktadır.
         </p>
 
-        <h3>Temel Kavramlar</h3>
-        <p>
+        <h3 data-i18n="agac_concepts_title">Temel Kavramlar</h3>
+        <p data-i18n="agac_concepts_p1" data-i18n-allow-html>
             Durumlar, pozisyonlar veya noktalar... İsimlendirme ne olursa olsun, temel soru şudur: <strong>Bir noktadan
                 diğerine geçiş ihtimali nedir?</strong> Rastgele hareket eden bir oyuncunun (random walker) akıbeti ne
             olacaktır? Sonsuz döngülerde mi sıkışacak, yoksa bir sonuca mı ulaşacaktır?
         </p>
 
-        <p>Analiz ortamımızı şu üç temel nokta türü üzerine kuralım:</p>
+        <p data-i18n="agac_concepts_p2">Analiz ortamımızı şu üç temel nokta türü üzerine kuralım:</p>
         <ul>
-            <li><strong>Başlangıç Noktası:</strong> Analizin başladığı, kesinlikle (olasılık = 1) bulunduğumuz noktadır.
+            <li data-i18n="agac_concept_start" data-i18n-allow-html><strong>Başlangıç Noktası:</strong> Analizin başladığı, kesinlikle (olasılık = 1) bulunduğumuz noktadır.
                 İlerleyen adımlarda tekrar bu noktaya dönülmesi mümkün olabilir.</li>
-            <li><strong>Zafer Noktası:</strong> Hedefe ulaşılan noktadır. Yolculuk burada sona erer ve 1 puan kazanılır.
+            <li data-i18n="agac_concept_victory" data-i18n-allow-html><strong>Zafer Noktası:</strong> Hedefe ulaşılan noktadır. Yolculuk burada sona erer ve 1 puan kazanılır.
             </li>
-            <li><strong>Mağlubiyet Noktası:</strong> Kaybedilen noktadır. Yolculuk burada sona erer ve 0 puan kazanılır.
+            <li data-i18n="agac_concept_defeat" data-i18n-allow-html><strong>Mağlubiyet Noktası:</strong> Kaybedilen noktadır. Yolculuk burada sona erer ve 0 puan kazanılır.
             </li>
         </ul>
 
-        <p>
+        <p data-i18n="agac_concepts_p3">
             Önce durumu anlamak için basit ortamları analiz edecek, ardından genel formüller oluşturmaya çalışacağız.
         </p>
 
-        <h3>Basit Ortam Analizi</h3>
+        <h3 data-i18n="agac_simple_title">Basit Ortam Analizi</h3>
         <figure>
-            <img src="images/AgacBasitbirornek01.png" alt="Basit Ağaç Örneği" style="max-width: 100%; height: auto;">
-            <figcaption><a href="images/AgacBasitbirornek01.png" download>Basit Örneği İndir</a></figcaption>
+            <img src="images/AgacBasitbirornek01.png" data-i18n-alt="agac_simple_img1_alt" alt="Basit Ağaç Örneği" style="max-width: 100%; height: auto;">
+            <figcaption><a href="images/AgacBasitbirornek01.png" download data-i18n="agac_simple_img1_download">Basit Örneği İndir</a></figcaption>
         </figure>
 
-        <p>
+        <p data-i18n="agac_simple_p1">
             Bu basit örnekte durum açıktır: Yukarı giden kazanır, aşağı giden kaybeder. Başlangıçtan başlar ve uç
             noktalarda biter. Ağaç ikili (binary) yapıda büyüse de, farklı sayıda kollara ayrılsa da sonuçlar aşikardır.
         </p>
 
         <div class="note">
-            <strong>Önemli Gözlemler:</strong>
+            <strong data-i18n="agac_observations_title">Önemli Gözlemler:</strong>
             <ol>
-                <li><strong>Bulunma Oranı (BO):</strong> Başlangıçta 1'dir. Gidilen yön sayısına (bu örnekte 2)
+                <li data-i18n="agac_observation_bo" data-i18n-allow-html><strong>Bulunma Oranı (BO):</strong> Başlangıçta 1'dir. Gidilen yön sayısına (bu örnekte 2)
                     bölünerek dağılır ve gidilen yöne eklenir.</li>
-                <li><strong>Kazanma Oranı (KO):</strong> Zafer (1) ve Mağlubiyet (0) noktalarından doğar, geriye doğru
+                <li data-i18n="agac_observation_ko" data-i18n-allow-html><strong>Kazanma Oranı (KO):</strong> Zafer (1) ve Mağlubiyet (0) noktalarından doğar, geriye doğru
                     beslenir. Katsayısı, gittiği noktanın çocuk sayısına bölünerek bulunur.</li>
             </ol>
         </div>
 
         <figure>
-            <img src="images/AgacBasitbirornek02.png" alt="İkinci Basit Örnek" style="max-width: 100%; height: auto;">
-            <figcaption><a href="images/AgacBasitbirornek02.png" download>2. Basit Örneği İndir</a></figcaption>
+            <img src="images/AgacBasitbirornek02.png" data-i18n-alt="agac_simple_img2_alt" alt="İkinci Basit Örnek" style="max-width: 100%; height: auto;">
+            <figcaption><a href="images/AgacBasitbirornek02.png" download data-i18n="agac_simple_img2_download">2. Basit Örneği İndir</a></figcaption>
         </figure>
 
-        <p>Bu şekilde oluşacak tüm ağaçların akışını takip edebiliriz. Ancak konunun asıl zorluğu ve derinliği, basit
+        <p data-i18n="agac_simple_p2">Bu şekilde oluşacak tüm ağaçların akışını takip edebiliriz. Ancak konunun asıl zorluğu ve derinliği, basit
             dallanmalarda değil, döngülerde yatmaktadır.</p>
 
-        <h3>Döngüsel Durumlar (Loops)</h3>
-        <p>
+        <h3 data-i18n="agac_loops_title">Döngüsel Durumlar (Loops)</h3>
+        <p data-i18n="agac_loops_p1">
             Ya yollardan biri, bizi daha önce geçtiğimiz bir noktaya geri götürürse?
         </p>
-        <p>
+        <p data-i18n="agac_loops_p2" data-i18n-allow-html>
             Döngü durumlarında <strong>Kazanma Oranı (KO)</strong> ve <strong>Bulunma Miktarı (BM)</strong> hesaplamak
             için her nokta için denklemler kurmamız gerekir:
         </p>
         <ul>
-            <li><strong>BM (Bulunma Miktarı) =</strong> $\sum$ (Gelen noktaların BM'si × Geldiği noktanın çocuk
+            <li data-i18n="agac_loops_bm_formula" data-i18n-allow-html><strong>BM (Bulunma Miktarı) =</strong> $\sum$ (Gelen noktaların BM'si × Geldiği noktanın çocuk
                 miktarına bölümü)</li>
-            <li><strong>KO (Kazanma Oranı) =</strong> $\sum$ (Gittiği noktaların KO'su / Kendi çocuk miktarı)</li>
+            <li data-i18n="agac_loops_ko_formula" data-i18n-allow-html><strong>KO (Kazanma Oranı) =</strong> $\sum$ (Gittiği noktaların KO'su / Kendi çocuk miktarı)</li>
         </ul>
-        <p>
+        <p data-i18n="agac_loops_note" data-i18n-allow-html>
             <em>Not: Başlangıç noktasının BM'sine özel olarak +1 eklenir. Artık "bulunma oranı" değil "bulunma miktarı"
                 kavramını kullanırız, çünkü döngüler nedeniyle bir noktada bulunma beklentisi %100'ü (1.0) aşabilir.
                 Örneğin ortalama 2 kere bulunma gibi.</em>
         </p>
 
         <figure>
-            <img src="images/Agacornekdongu01.png" alt="Döngü Örneği" style="max-width: 100%; height: auto;">
-            <figcaption><a href="images/Agacornekdongu01.png" download>1. Döngü Örneği İndir</a></figcaption>
+            <img src="images/Agacornekdongu01.png" data-i18n-alt="agac_loops_img1_alt" alt="Döngü Örneği" style="max-width: 100%; height: auto;">
+            <figcaption><a href="images/Agacornekdongu01.png" download data-i18n="agac_loops_img1_download">1. Döngü Örneği İndir</a></figcaption>
         </figure>
 
-        <h4>Hesaplama Örneği</h4>
-        <p>
+        <h4 data-i18n="agac_calc_example_title">Hesaplama Örneği</h4>
+        <p data-i18n="agac_calc_example_p1" data-i18n-allow-html>
             Başlangıç noktasına $b$, diğer noktaya $a$ diyelim. $a$, $b$'den %50 ihtimalle gelinen bir noktadır.
             <br>
             $b = 1 + (a/2)$
             <br>
             $a = b/2$
         </p>
-        <p>
+        <p data-i18n="agac_calc_example_p2" data-i18n-allow-html>
             Denklemleri çözürsek:
             <br>
             $1 + a/2 = 2a \Rightarrow 2 + a = 4a \Rightarrow 3a = 2 \Rightarrow a = 2/3$
             <br>
             Böylece $b = 4/3$ bulunur.
         </p>
-        <p>
+        <p data-i18n="agac_calc_example_p3" data-i18n-allow-html>
             Kazanma Oranı (KO) hesabı için:
             <br>
             $BaşKO = AKO/2$
@@ -112,30 +112,30 @@
             Sonuç: $BaşKO = 1/3$ ve $AKO = 1/2 + 1/6 = 2/3$
         </p>
 
-        <p>
+        <p data-i18n="agac_calc_example_p4" data-i18n-allow-html>
             Burada döngü, sonsuza giden bir geometrik dizi toplamı (sigma) gibi davranır: $\sum a \cdot r^i$.
         </p>
 
         <figure>
-            <img src="images/Agacornekdongu02.png" alt="Açık Döngü (Hesaplanmış) Örneği"
+            <img src="images/Agacornekdongu02.png" data-i18n-alt="agac_loops_img2_alt" alt="Açık Döngü (Hesaplanmış) Örneği"
                 style="max-width: 100%; height: auto;">
-            <figcaption><a href="images/Agacornekdongu02.png" download>1. Döngü (Hesaplanmış) Örneği İndir</a>
+            <figcaption><a href="images/Agacornekdongu02.png" download data-i18n="agac_loops_img2_download">1. Döngü (Hesaplanmış) Örneği İndir</a>
             </figcaption>
         </figure>
 
-        <h3>Matematiksel Açıklama</h3>
-        <p>
+        <h3 data-i18n="agac_math_explain_title">Matematiksel Açıklama</h3>
+        <p data-i18n="agac_math_explain_p1" data-i18n-allow-html>
             Başlangıç noktasının (BaşKO) $1/3$ olmasının sebebini açıklayalım. Bulunma miktarını hesaplarken git-gel
             değeri $(1/2 \times 1/2) = 1/4$'tür. Bu döngü sonsuz kez tekrarlanabilir.
         </p>
-        <p>
+        <p data-i18n="agac_math_explain_p2" data-i18n-allow-html>
             Toplam = $1 + 1/4 + 1/16 + \dots = \sum_{n=0}^{\infty} (1/4)^n$
         </p>
-        <p>
+        <p data-i18n="agac_math_explain_p3" data-i18n-allow-html>
             Sonsuz geometrik dizi toplam formülü $\frac{1}{1-r}$ kullanılarak: $\frac{1}{1 - 1/4} = \frac{1}{3/4} = 4/3$
             bulunur.
         </p>
-        <p>
+        <p data-i18n="agac_math_explain_p4" data-i18n-allow-html>
             Kazanma oranını da $a$ merkezli hesaplarsak:
             <br>
             $1/2$ direkt kazanış, $1/4$ geri dönüş.
@@ -143,55 +143,54 @@
             $(1/2) \times (1 + 1/4 + \dots) = (1/2) \times (4/3) = 2/3$.
         </p>
 
-        <h3>Özet Formüller ve Tanımlar</h3>
-        <p>Bulmuş olduğum formülleri ve tanımları aşağıda listeliyorum:</p>
+        <h3 data-i18n="agac_formulas_title">Özet Formüller ve Tanımlar</h3>
+        <p data-i18n="agac_formulas_intro">Bulmuş olduğum formülleri ve tanımları aşağıda listeliyorum:</p>
 
         <dl>
-            <dt>Kazanma Oranı (KO)</dt>
-            <dd>Toplam(Gitme İhtimali × Gidilen Noktanın Kazanma Oranı)</dd>
+            <dt data-i18n="agac_formula_ko_title">Kazanma Oranı (KO)</dt>
+            <dd data-i18n="agac_formula_ko_desc">Toplam(Gitme İhtimali × Gidilen Noktanın Kazanma Oranı)</dd>
 
-            <dt>Bulunma Miktarı (BM)</dt>
-            <dd>Toplam(Gelme İhtimali × Gelen Noktanın Bulunma Miktarı)</dd>
-            <dd>Alternatif: En az bir kere bulunma ihtimali × Kendine gelme miktarı</dd>
+            <dt data-i18n="agac_formula_bm_title">Bulunma Miktarı (BM)</dt>
+            <dd data-i18n="agac_formula_bm_desc1">Toplam(Gelme İhtimali × Gelen Noktanın Bulunma Miktarı)</dd>
+            <dd data-i18n="agac_formula_bm_desc2">Alternatif: En az bir kere bulunma ihtimali × Kendine gelme miktarı</dd>
 
-            <dt>Kendine Gelme Miktarı (KGM)</dt>
-            <dd>$\frac{1}{1 - \text{Kendine En Az Bir Kere Gelme İhtimali}}$</dd>
-            <dd>Alternatif: Bulunma Miktarı / En Az Bir Kere Bulunma İhtimali</dd>
+            <dt data-i18n="agac_formula_kgm_title">Kendine Gelme Miktarı (KGM)</dt>
+            <dd data-i18n="agac_formula_kgm_desc1" data-i18n-allow-html>$\frac{1}{1 - \text{Kendine En Az Bir Kere Gelme İhtimali}}$</dd>
+            <dd data-i18n="agac_formula_kgm_desc2">Alternatif: Bulunma Miktarı / En Az Bir Kere Bulunma İhtimali</dd>
 
-            <dt>Sadece N Kere Gelme İhtimali</dt>
-            <dd>En Az Bir Kere Bulunma İhtimali × $(1 - \text{Kendine Gelme Miktarı}) \times
+            <dt data-i18n="agac_formula_only_n_title">Sadece N Kere Gelme İhtimali</dt>
+            <dd data-i18n="agac_formula_only_n_desc" data-i18n-allow-html>En Az Bir Kere Bulunma İhtimali × $(1 - \text{Kendine Gelme Miktarı}) \times
                 \text{Kendine Gelme Miktarı}^{n-1}$</dd>
         </dl>
 
-        <p>
+        <p data-i18n="agac_formulas_note" data-i18n-allow-html>
             <strong>Not:</strong> Kazanma oranları ve kendine gelme oranları, başlangıç noktasından bağımsız olarak
             haritanın yapısı ile alakalıdır. Bulunma miktarları ise başlangıç noktasına bağımlıdır.
         </p>
 
-        <p>
+        <p data-i18n="agac_formulas_end">
             Bu konu üzerine alt-ağaç analizleri ve farklı ağaç türleri üzerine çalışmalarım bulunmakta, ancak temel
             mantık yukarıdaki gibidir.
         </p>
 
-        <h3>Kısaltmalar</h3>
+        <h3 data-i18n="agac_abbreviations_title">Kısaltmalar</h3>
         <ul>
-            <li><strong>KO:</strong> Kazanma Oranı</li>
-            <li><strong>BM:</strong> Bulunma Miktarı</li>
-            <li><strong>Ea1KBO:</strong> En Az Bir Kere Bulunma Oranı</li>
-            <li><strong>K1GO:</strong> Kendine Bir Kere Gelme Oranı</li>
-            <li><strong>KGM:</strong> Kendine Gelme Miktarı</li>
-            <li><strong>SBKBO:</strong> Sadece Bir Kere Bulunma Oranı</li>
+            <li data-i18n="agac_abbr_ko" data-i18n-allow-html><strong>KO:</strong> Kazanma Oranı</li>
+            <li data-i18n="agac_abbr_bm" data-i18n-allow-html><strong>BM:</strong> Bulunma Miktarı</li>
+            <li data-i18n="agac_abbr_ea1kbo" data-i18n-allow-html><strong>Ea1KBO:</strong> En Az Bir Kere Bulunma Oranı</li>
+            <li data-i18n="agac_abbr_k1go" data-i18n-allow-html><strong>K1GO:</strong> Kendine Bir Kere Gelme Oranı</li>
+            <li data-i18n="agac_abbr_kgm" data-i18n-allow-html><strong>KGM:</strong> Kendine Gelme Miktarı</li>
+            <li data-i18n="agac_abbr_sbkbo" data-i18n-allow-html><strong>SBKBO:</strong> Sadece Bir Kere Bulunma Oranı</li>
         </ul>
 
-        <h3>Ek Görseller</h3>
+        <h3 data-i18n="agac_additional_imgs_title">Ek Görseller</h3>
         <figure>
-            <img src="images/AgacOrnek1.png" alt="Karmaşık Ağaç Örneği" style="max-width: 100%; height: auto;">
-            <figcaption><a href="images/AgacOrnek1.png" download>Örneği İndir</a> - Kaybetme yolunun geniş olduğu bir
-                örnek.
+            <img src="images/AgacOrnek1.png" data-i18n-alt="agac_complex_img_alt" alt="Karmaşık Ağaç Örneği" style="max-width: 100%; height: auto;">
+            <figcaption><a href="images/AgacOrnek1.png" download data-i18n="agac_complex_img_download">Örneği İndir</a> - <span data-i18n="agac_complex_img_desc">Kaybetme yolunun geniş olduğu bir örnek.</span>
             </figcaption>
         </figure>
-        <h2>Yapılabilecekler</h2>
-        <p>
+        <h2 data-i18n="agac_todo_title">Yapılabilecekler</h2>
+        <p data-i18n="agac_todo_content" data-i18n-allow-html>
             Markov zincirlerini araştırmak.<br>
             Bu yazıyı okuyan biri varsa sevgilerle... 04.12.25
         </p>
@@ -199,18 +198,17 @@
         <div class="gallery"
             style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px;">
             <figure>
-                <img src="images/agacChatGPT.png" alt="ChatGPT Görseli" style="max-width: 300px; height: auto;">
-                <figcaption><a href="images/agacChatGPT.png" download>ChatGPT Görseli İndir</a></figcaption>
+                <img src="images/agacChatGPT.png" data-i18n-alt="agac_gpt_img_alt" alt="ChatGPT Görseli" style="max-width: 300px; height: auto;">
+                <figcaption><a href="images/agacChatGPT.png" download data-i18n="agac_gpt_img_download">ChatGPT Görseli İndir</a></figcaption>
             </figure>
             <figure>
-                <img src="images/agacGemini.png" alt="Gemini Görseli" style="max-width: 300px; height: auto;">
-                <figcaption><a href="images/agacGemini.png" download>Gemini Görseli İndir</a></figcaption>
+                <img src="images/agacGemini.png" data-i18n-alt="agac_gemini_img_alt" alt="Gemini Görseli" style="max-width: 300px; height: auto;">
+                <figcaption><a href="images/agacGemini.png" download data-i18n="agac_gemini_img_download">Gemini Görseli İndir</a></figcaption>
             </figure>
             <figure>
-                <img src="images/agaczimage.jpeg" alt="Z-Image Görseli" style="max-width: 300px; height: auto;">
-                <figcaption><a href="images/agaczimage.jpeg" download>Z-Image Görseli İndir</a></figcaption>
+                <img src="images/agaczimage.jpeg" data-i18n-alt="agac_zimg_alt" alt="Z-Image Görseli" style="max-width: 300px; height: auto;">
+                <figcaption><a href="images/agaczimage.jpeg" download data-i18n="agac_zimg_img_download">Z-Image Görseli İndir</a></figcaption>
             </figure>
         </div>
     </article>
-
 </section>

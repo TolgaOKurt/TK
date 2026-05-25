@@ -1,0 +1,256 @@
+/*
+ * İÇİNDEKİLER
+ * =============================================================================
+ * 1. DEĞİŞKENLER (VARIABLES) & FONTS
+ *    - @import ........................ Google Fonts entegrasyonu
+ *    - :root .......................... Premium HSL/RGB renk değişkenleri (Açık mod)
+ *    - [data-theme="dark"] ............ Premium derin orman karanlık mod değişkenleri
+ *
+ * 2. TEMEL AYARLAR (RESET & BASE)
+ *    - * .............................. Box-sizing ve kenarlık yumuşatma
+ *    - html, body ..................... Arka plan gradyanı, ana font ve yükseklik
+ *
+ * 3. TİPOGRAFİ (TYPOGRAPHY)
+ *    - kbd, samp ...................... Font ailesi mirası
+ *    - h1, h2, h3, h4, h5, h6 ......... Başlık stilleri, boyutlar ve zümrüt renkleri
+ *    - p, pre ......................... Paragraf ve metin stilleri
+ *    - strong, em ..................... Özel bakır ve turuncu vurguları
+ *    - blockquote ..................... Degradeli, gölgeli lüks alıntı kartı
+ *    - ul, ol, li ..................... Liste düzeni
+ *    - code ........................... Modern IDE tarzı cam kod kapsülleri
+ *
+ * 4. BAĞLANTILAR (LINKS)
+ *    - a .............................. Animasyonlu genişleyen alt çizgili premium link
+ *    - Dark Mode ...................... Karanlık mod için link ve hover uyarlamaları
+ *
+ * 5. MEDYA VE GÖRSELLER (MEDIA)
+ *    - img.res ........................ Responsive görsel sınıfı
+ *
+ * 6. YARDIMCI SINIFLAR (UTILITIES)
+ *    - .visually-hidden ............... Erişilebilirlik için gizli içerik
+ * =============================================================================
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* Zümrüt teması renk değişkenleri (Açık mod) */
+  --bg: radial-gradient(circle at 10% 20%, rgb(245, 252, 248) 0%, rgb(232, 244, 239) 90.1%);
+  --text: rgb(18, 38, 30);
+  --muted: rgb(90, 115, 102);
+  --maroon: rgb(16, 92, 59); /* Canlı Zümrüt */
+  --orange: rgb(214, 90, 49); /* Sıcak Bakır */
+  --gap: 28px;
+  --maxwidth: 1300px;
+  --headercolor: rgb(10, 74, 46); /* Derin Zümrüt */
+}
+
+/* Dark tema değişkenleri */
+[data-theme="dark"] {
+  --bg: radial-gradient(circle at top right, rgb(20, 28, 25) 0%, rgb(11, 18, 15) 100%);
+  --text: rgb(226, 238, 232);
+  --muted: rgb(125, 148, 137);
+  --maroon: rgb(80, 220, 160); /* Parlak Nane */
+  --orange: rgb(255, 160, 122); /* Şeftali Vurgu */
+  --headercolor: rgb(172, 243, 212); /* Işıltılı Başlıklar */
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  min-height: 100vh;
+  background: var(--bg);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: transparent;
+  color: var(--text);
+  line-height: 1.7;
+  margin: 0 auto;
+  max-width: var(--maxwidth);
+  padding: 0 1.5em;
+  min-height: 100vh;
+}
+
+kbd,
+samp {
+  font-family: inherit;
+}
+
+/* Başlıklar */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  margin-top: 1.4em;
+  margin-bottom: 0.5em;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 2.6em;
+  color: var(--headercolor);
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2em;
+  color: var(--headercolor);
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: 1.6em;
+  color: var(--headercolor);
+}
+
+h4 {
+  font-size: 1.25em;
+  color: var(--headercolor);
+}
+
+/* Paragraflar */
+p,
+pre {
+  font-size: 16.5px;
+  margin-bottom: 1.2em;
+  color: var(--text);
+  font-family: inherit;
+  font-weight: 400;
+  opacity: 0.95;
+}
+
+/* Vurgular */
+strong {
+  color: var(--orange);
+  font-weight: 600;
+}
+
+em {
+  color: var(--maroon);
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Alıntılar - Lüks quote kartı */
+blockquote {
+  border-left: 4px solid var(--maroon);
+  padding: 1.2em 1.8em;
+  margin: 1.5em 0;
+  color: var(--text);
+  font-style: italic;
+  background: rgba(16, 92, 59, 0.04);
+  border-radius: 4px 16px 16px 4px;
+  box-shadow: 0 10px 30px -15px rgba(10, 74, 46, 0.05);
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.8;
+}
+
+[data-theme="dark"] blockquote {
+  background: rgba(80, 220, 160, 0.03);
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.3);
+}
+
+/* Listeler */
+ul,
+ol {
+  margin: 1.2em 0;
+  padding-left: 2em;
+}
+
+li {
+  margin-bottom: 0.5em;
+  font-size: 16px;
+}
+
+/* Kod blokları */
+code {
+  font-family: 'JetBrains Mono', 'Cascadia Code', "Courier New", monospace;
+  background: rgba(16, 92, 59, 0.06);
+  padding: 3px 6px;
+  border-radius: 6px;
+  color: var(--headercolor);
+  font-size: 0.9em;
+  border: 1px solid rgba(16, 92, 59, 0.1);
+  transition: all 0.2s ease;
+}
+
+[data-theme="dark"] code {
+  background: rgba(80, 220, 160, 0.06);
+  color: var(--maroon);
+  border-color: rgba(80, 220, 160, 0.12);
+}
+
+/* Linkler - Akıcı alt çizgili premium efekt */
+a {
+  color: var(--maroon);
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--orange);
+  transform-origin: bottom right;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a:hover {
+  color: var(--orange);
+}
+
+a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+[data-theme="dark"] a {
+  color: var(--maroon);
+}
+
+[data-theme="dark"] a:hover {
+  color: var(--orange);
+}
+
+img.res {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 16px;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px -20px rgba(10, 74, 46, 0.15);
+}
+
+[data-theme="dark"] img.res {
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

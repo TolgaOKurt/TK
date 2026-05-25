@@ -58,7 +58,8 @@ window.theme = (() => {
     if (!themeLink) return;
 
     const themes = {
-      default: { name: 'Default', url: 'css/themes/default/main.css' }
+      default: { name: 'Default', url: 'css/themes/default/main.css' },
+      emerald: { name: 'Emerald', url: 'css/themes/emerald/main.css' }
     };
 
     // Create Dropdown Container

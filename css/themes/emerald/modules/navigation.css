@@ -1,0 +1,152 @@
+/*
+ * İÇİNDEKİLER
+ * =============================================================================
+ * 1. NAVİGASYON (NAVIGATION)
+ *    - nav#nav ........................ Menü konteyneri ve dikey yerleşim
+ *
+ * 2. MENÜ LINKLERİ (LINKS)
+ *    - .link .......................... Menü öğeleri, padding ve yuvarlatılmış köşeler
+ *    - :hover ......................... Akıcı sağa kayma, bakır renk dolgusu ve aydınlanma
+ *    - .active ........................ Seçili sayfa için yeşil cam kapsül dolgusu
+ *    - :focus-visible ................. Klavye odaklanma çerçevesi
+ *
+ * 3. KLASÖR YAPISI (FOLDERS)
+ *    - .nav-folder-content ............ Alt menü dikey kayma animasyonu
+ *    - .nav-folder-toggle ............. Klasör açma/kapama kapsül butonu
+ *    - İkonlar ........................ Navigasyon ikon yumuşatmaları
+ * =============================================================================
+ */
+
+nav#nav {
+  align-self: start;
+  padding-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+nav .link,
+.nav-folder-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: var(--text);
+  margin: 4px 0;
+  padding: 10px 16px;
+  font-weight: 600;
+  font-size: 17.5px;
+  border-radius: 12px;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+nav .link:hover,
+.nav-folder-toggle:hover {
+  color: var(--orange);
+  background: rgba(214, 90, 49, 0.05);
+  border-color: rgba(214, 90, 49, 0.08);
+  transform: translateX(4px);
+}
+
+[data-theme="dark"] nav .link:hover,
+[data-theme="dark"] .nav-folder-toggle:hover {
+  background: rgba(255, 160, 122, 0.05);
+  border-color: rgba(255, 160, 122, 0.08);
+}
+
+nav .link.active {
+  color: var(--maroon);
+  background: rgba(16, 92, 59, 0.08);
+  border-color: rgba(16, 92, 59, 0.12);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+[data-theme="dark"] nav .link.active {
+  background: rgba(80, 220, 160, 0.08);
+  border-color: rgba(80, 220, 160, 0.15);
+}
+
+nav .link:focus-visible,
+.nav-folder-toggle:focus-visible {
+  outline: 2px dashed var(--orange);
+  outline-offset: 4px;
+}
+
+/* Nav ikon stili */
+img.nav-icon {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  margin-left: 6px;
+  opacity: 0.8;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+nav .link:hover img.nav-icon {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.nav-folder-content {
+  padding-left: 14px;
+  margin-left: 8px;
+  border-left: 1px dashed rgba(16, 92, 59, 0.15);
+  overflow: hidden;
+  max-height: 1000px;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s ease;
+}
+
+[data-theme="dark"] .nav-folder-content {
+  border-left-color: rgba(80, 220, 160, 0.15);
+}
+
+.nav-folder-content[hidden] {
+  max-height: 0;
+}
+
+.nav-folder-toggle {
+  background: none;
+  border: none;
+  padding: 10px 16px;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.nav-folder-toggle::after {
+  content: ' ▼';
+  font-size: 0.7em;
+  display: inline-block;
+  opacity: 0.7;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-folder-toggle[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+@media (max-width:950px) {
+  nav#nav {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  nav .link,
+  .nav-folder-toggle {
+    font-size: 15px;
+    padding: 8px 12px;
+    margin: 0;
+  }
+
+  .nav-folder-content {
+    border-left: 0;
+    padding-left: 0;
+    margin-left: 0;
+    display: flex;
+    gap: 8px;
+  }
+}

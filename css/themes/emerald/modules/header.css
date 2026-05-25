@@ -1,0 +1,124 @@
+/*
+ * İÇİNDEKİLER
+ * =============================================================================
+ * 1. HEADER YAPISI & DÜZEN
+ *    - header ......................... Flexbox sarma ve sıralama düzeni
+ *    - header h1 ...................... Başlık stili, genişlik ve sıralama
+ *    - header p ....................... Alt başlık stili ve genişlik
+ *
+ * 2. YARDIMCI ARAÇLAR & BUTONLAR
+ *    - #theme-toggle, #style-switcher-btn, .lang-dropdown ... Üst sağ araç çubuğu düzeni
+ *
+ * 3. BAŞLIK BAĞLANTISI
+ *    - .header-title-link ............. Site başlığı link stili
+ *    - :hover ......................... Parlama ve yumuşak yükselme efekti
+ *
+ * 4. DUYARLILIK (RESPONSIVE)
+ *    - @media (max-width:950px) ....... Mobil cihazlarda ortalanmış sütun yerleşimi
+ * =============================================================================
+ */
+
+/* header */
+header {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(16, 92, 59, 0.08);
+  padding-bottom: 28px;
+  margin-bottom: 20px;
+}
+
+[data-theme="dark"] header {
+  border-color: rgba(80, 220, 160, 0.08);
+}
+
+header h1 {
+  width: auto;
+  margin: 0;
+  order: 1;
+  font-size: 2.8em;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--headercolor);
+}
+
+header p {
+  width: 100%;
+  margin: 12px 0 0 0;
+  order: 3;
+  font-size: 16.5px;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+header p a {
+  font-weight: 500;
+}
+
+/* Butonları sağa hizala */
+#theme-toggle,
+#style-switcher-btn,
+.lang-dropdown {
+  order: 2;
+  margin-left: 12px;
+}
+
+.ai-note {
+  order: 4;
+  width: 100%;
+  text-align: right;
+  margin-top: 6px;
+}
+
+.header-title-link {
+  color: inherit;
+  text-decoration: none;
+  font-weight: inherit;
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+}
+
+.header-title-link:hover {
+  color: inherit;
+  text-decoration: none;
+  transform: translateY(-2px);
+  filter: drop-shadow(0 4px 12px rgba(16, 92, 59, 0.15));
+}
+
+[data-theme="dark"] .header-title-link:hover {
+  filter: drop-shadow(0 4px 12px rgba(80, 220, 160, 0.2));
+}
+
+/* Responsive */
+@media (max-width:950px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 24px;
+    margin-bottom: 16px;
+  }
+
+  header h1 {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  #theme-toggle,
+  #style-switcher-btn,
+  .lang-dropdown {
+    margin: 8px 6px;
+  }
+
+  header p {
+    margin-top: 16px;
+  }
+
+  .ai-note {
+    text-align: center;
+    margin-top: 10px;
+  }
+}
